@@ -2,9 +2,18 @@
   import MarkdownIt from 'markdown-it';
   import { ref } from 'vue';
   import axios from 'axios';
-  const mdString = '# 一级标题';
-  const mdRender = new MarkdownIt('commonmark');
-  // mdRender.render(mdString)
+  import hljs from 'highlight.js';
+  const mdRender = new MarkdownIt({
+    // 语法高亮
+    highlight: function (str, lang) {
+      if (lang && hljs.getLanguage(lang)) {
+        try {
+          return hljs.highlight(str, { language: lang }).value;
+        } catch (__) {}
+      }
+      return ''; // use external default escaping
+    }
+  });
   const htmlObj = ref(null)
 
   function getMDTest() {
@@ -24,6 +33,13 @@
 </template>
 
 <style lang="css">
+pre {
+  padding: 5px;
+  border-radius: 5px;
+  width: 400px;
+  overflow: auto;
+  background-color: rgba(20, 20, 20, 0.2);
+}
  .markdown-body{
     /* width: 400px; */
  }
