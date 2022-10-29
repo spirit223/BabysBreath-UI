@@ -28,7 +28,6 @@
 
 <template>
   <button @click="getMDTest">获取markdown文件</button>
-  <!-- <div class="markdown-body" v-html="htmlString"></div> -->
   <div class="markdown-body" v-html="htmlObj"></div>
 </template>
 
@@ -40,7 +39,4 @@ pre {
   overflow: auto;
   background-color: rgba(20, 20, 20, 0.2);
 }
- .markdown-body{
-    /* width: 400px; */
- }
 </style>
