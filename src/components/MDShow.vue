@@ -1,38 +1,30 @@
 <script setup>
-  import { marked } from 'marked';
+  import MarkdownIt from 'markdown-it';
   import { ref } from 'vue';
   import axios from 'axios';
   const mdString = '# 一级标题';
-  let htmlString = marked.parse(mdString);
-  const htmlObj = ref("")
+  const mdRender = new MarkdownIt('commonmark');
+  // mdRender.render(mdString)
+  const htmlObj = ref(null)
 
-  function getMD() {
-    axios.get('http://localhost:65534/file/md', {
-      params: {
-        id: 1,
-        name: markdownName
-      }
-    })
-    .then((response) => {
-      htmlObj = response.data
-      console.log(response);
-    })
-    .catch((error) => {
-      console.error(error);
-    })
+  function getMDTest() {
+    axios.get('http://ironcentury.cc/externalLinksController/chain/JWT.md?ckey=4xDG2Rqywh1cezE8sfzIFZho6n1PcVjWf4wbIICatFmXOigPkB%2BpcqiZYb6WpcTv')
+      .then((response) => {
+        htmlObj.value = mdRender.render(response.data)
+      })
   }
+
+  
 </script>
 
 <template>
-  <button @click="getMD">获取markdown文件</button>
-  <div class="markdown-body" v-html="htmlString"></div>
+  <button @click="getMDTest">获取markdown文件</button>
+  <!-- <div class="markdown-body" v-html="htmlString"></div> -->
   <div class="markdown-body" v-html="htmlObj"></div>
 </template>
 
 <style lang="css">
  .markdown-body{
-    background-color: aquamarine;
-    width: 400px;
-    height: 200px;
+    /* width: 400px; */
  }
 </style>
