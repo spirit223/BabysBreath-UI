@@ -5,6 +5,10 @@
        url('../fonts/iconfont.ttf') format('truetype');
 }
 
+:root {
+  --user-border-color:#B5B5B5;
+}
+
 * {
   margin: 0;
   padding: 0;

@@ -5,48 +5,38 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <style>
-    /* div::after {
-      content: '>';
-      transition: 2s;
-    }
-    div::after:hover {
-      transform: rotate(90deg);
-    } */
-    #secondBox {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    .box {
       width: 200px;
       height: 200px;
       background-color: #666;
-      transition: 2s;
-    }
-    #secondBox::after {
-      position: absolute;
-      content: '';
-      display: block;
-      width: 50px;
-      height: 50px;
-      border-right: red 1px solid;
-      border-bottom: red 1px solid;
-      transform: rotate(45deg);
-    }
-    #secondBox:hover::after {
-      transform: rotate(225deg);
-      transition: 0.3s;
-    }
-    #spanBox {
-      background-color: #313131;
-      width: 120px;
     }
   </style>
 </head>
 <body>
-  <div id="oneTitle">第一级标题</div>
-  <div id="secondBox"></div>
-  <br>
-  <span id="spanBox">aaaa</span>
+  <div id="app">
+    <div class="box" v-show="booleanArr.value[2]"></div>
+    <button @click="change"></button>
+  </div>
+<script>
+  const { createApp } = Vue
+  
+  createApp({
+    data() {
+      return {
+        message: 'Hello Vue!'
+      }
+    }
+  }).mount('#app')
+</script>
+<script setup>
+  import {ref} from 'vue';
+  const booleanArr = ref([new Array(3).fill(false)])
+  function change() {
+    booleanArr.value[2] = !booleanArr.value[2]
+  }
+</script>
 </body>
+
 </html>

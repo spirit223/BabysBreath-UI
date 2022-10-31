@@ -2,7 +2,7 @@
   /**
    * 导航栏
    */
-  import Navigation from '../components/Navigation.vue';
+  import NavigationRouter from '../components/NavigationRouter.vue';
   import {ref} from 'vue';
   const navigations1 = ref(['资料选项卡1', '资料选项卡2', '资料选项卡3'])
   const navigations2 = ref(['文章选项卡1', '文章选项卡2', '文章选项卡3'])
@@ -14,38 +14,39 @@
     <p>navigations1</p>
     <ul>
       <li v-for="(item, index) of navigations1" :key="index">
-        <Navigation>
+        <NavigationRouter>
           <template #navigationContent>
             <div>
               {{item}}
             </div>
           </template>
-        </Navigation>
+        </NavigationRouter>
       </li>
     </ul>
 
     <p>navigations2</p>
     <ul>
       <li v-for="(item, index) of navigations2" :key="index">
-        <Navigation>
+        <NavigationRouter>
           <template #navigationContent>
             <div>
               {{item}}
             </div>
           </template>
-        </Navigation>
+        </NavigationRouter>
       </li>
     </ul>
+
     <p>navigations3</p>
     <ul>
       <li v-for="(item, index) of navigations3" :key="index">
-        <Navigation>
+        <NavigationRouter>
           <template #navigationContent>
             <div>
               {{item}}
             </div>
           </template>
-        </Navigation>
+        </NavigationRouter>
       </li>
     </ul>
     
@@ -66,7 +67,7 @@ a{
   text-align: center;
   padding: 5px 15px;
   margin: 3px 2px;
-  transition: .3s ease-in-out;
+  transition: .2s ease-in-out;
 }
 a:hover {
   margin-top: 6px;
@@ -77,7 +78,7 @@ a:hover {
   text-align: center;
   line-height: 30px;
   box-shadow: 5px 5px 7px 1px rgb(0 0 0 / 20%);
-  transition: .3s ease-in-out;
+  transition: .2s ease-in-out;
 }
 
 /* 整体部分 */
@@ -85,7 +86,7 @@ a:hover {
   padding: 8px;
   /* border: #F9F871 2px solid; */
   border-bottom: 0px;
-  border-left: #B5B5B5 15px solid;
+  /* border-left: var(--user-border-color) 15px solid; */
   box-sizing: content-box;
   /* background-color: #fe275d60; */
   
@@ -116,7 +117,7 @@ p {
 p:hover {
   box-shadow:none;
   margin-bottom: 5px;
-  transition: .3s;
+  transition: .2s;
 }
 /* 菜单栏字体图标 */
 p::before {
@@ -148,7 +149,7 @@ p:hover::after {
   top: 18px;
   right: 18px;
   transform: rotate(45deg);
-  transition: 0.3s;
+  transition: 0.2s;
 }
 
 </style>
