@@ -159,6 +159,7 @@
     display: inline-block;
     cursor: pointer;
     background-color: var(--perset-bs-shallowpurple);
+    color: var(--preset-bs-weakgray);
     width: 256px;
     border-radius: 30px;
     text-align: center;

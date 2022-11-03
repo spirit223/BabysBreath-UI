@@ -25,8 +25,9 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: #C8FCEA60;
-  /* color: #070b5b; */
+  background-color: var(--preset-bs-whitegray);
+  color: var(--preset-bs-weakgray);
+
 }
 
 /* 头部两个侧边栏 */
