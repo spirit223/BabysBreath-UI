@@ -58,10 +58,10 @@
   right: 0;
   /* margin-top: 44px; */
   z-index: -9999;
-  border-left: #B5B5B5 20px solid;
-  /* background-color: #416f32; */
+  /* border-left: #B5B5B5 20px solid; */
+  background-color: var(--preset-bs-white);
   padding: 20px;
-  width: 70%;
+  width: 80%;
   overflow: auto;
 }
 .markdown-body pre code {

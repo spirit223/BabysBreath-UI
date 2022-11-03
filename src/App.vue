@@ -28,6 +28,8 @@
   </div>
 </template>
 
-<style scoped>
-
+<style>
+body {
+  background-color: var(--preset-bs-whitepurple);
+}
 </style>

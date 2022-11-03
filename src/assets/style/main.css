@@ -7,6 +7,7 @@
 
 :root {
   /* 颜色定义 */
+  --preset-bs-white:#FFFFFF;
   --preset-bs-purple:#2d307a;
   --perset-bs-shallowpurple:#525288;
   --preset-bs-darkpurple:#1f2040;
