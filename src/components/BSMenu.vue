@@ -36,6 +36,7 @@
 
 <template>
   <div class="bs-nav">
+      <!-- 循环渲染分类 -->
       <div 
         v-for="(classify, classifyIndex) of arrClassify" 
         :key="classifyIndex"
@@ -157,7 +158,7 @@
     cursor: pointer;
     background-color: var(--perset-bs-tenderpurple);
     width: 256px;
-    border-radius: 10px;
+    border-radius: 30px;
     text-align: center;
     padding: 5px 15px;
     margin: 3px 0px;
