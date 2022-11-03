@@ -37,37 +37,39 @@
 <template>
   <div class="bs-nav">
       <!-- 循环渲染分类 -->
-      <div 
-        v-for="(classify, classifyIndex) of arrClassify" 
-        :key="classifyIndex"
-        :ref="el => {bindIndex++}"
-        class="container-box"
-        :class="{'bs-container-box-showing': arrFlag[classifyIndex]}"
-      >
-        <!-- 分类标题 -->
-        <p 
-          class="bs-menubar-title"
-          :class="[{'bs-menubar-title-showing': arrFlag[classifyIndex]}, {'bs-menubar-title-showing::after': arrFlag[classifyIndex]}]"
-          @click="event => {handleTileClick(classifyIndex, event)}"
+      <TransitionGroup  name="list" tag="div">
+        <div 
+          v-for="(classify, classifyIndex) of arrClassify" 
+          :key="classifyIndex"
+          :ref="el => {bindIndex++}"
+          class="container-box"
+          :class="{'bs-container-box-showing': arrFlag[classifyIndex]}"
         >
-          {{classify}}
-        </p>
-        <!-- 列表循环渲染子项 -->
-        <Transition>
-          <ul v-if="arrFlag[classifyIndex]">
-            <li 
-              v-for="(label, labelIndex) of arrLabel[classifyIndex]" 
-              :key="labelIndex"
-              :ref="el => {arrItems.push(el)}"
-              class="bs-menu-item"
-              :class="'bs-menu-item-' + classifyIndex"
-            >
-              <!-- 导航项显示的内容 -->
-              {{label}}
-            </li>
-          </ul>
-      </Transition>
-      </div>
+          <!-- 分类标题 -->
+          <p 
+            class="bs-menubar-title"
+            :class="[{'bs-menubar-title-showing': arrFlag[classifyIndex]}, {'bs-menubar-title-showing::after': arrFlag[classifyIndex]}]"
+            @click="event => {handleTileClick(classifyIndex, event)}"
+          >
+            {{classify}}
+          </p>
+          <!-- 列表循环渲染子项 -->
+          <Transition>
+            <ul v-if="arrFlag[classifyIndex]">
+              <li 
+                v-for="(label, labelIndex) of arrLabel[classifyIndex]" 
+                :key="labelIndex"
+                :ref="el => {arrItems.push(el)}"
+                class="bs-menu-item"
+                :class="'bs-menu-item-' + classifyIndex"
+              >
+                <!-- 导航项显示的内容 -->
+                {{label}}
+              </li>
+            </ul>
+          </Transition>
+        </div>
+      </TransitionGroup>
   </div>
 </template>
 
@@ -189,5 +191,22 @@
   .v-enter-from,
   .v-leave-to {
     opacity: 0;
+  }
+  .list-move, /* 对移动中的元素应用的过渡 */
+  .list-enter-active,
+  .list-leave-active {
+    transition: all 0.5s ease;
+  }
+
+  .list-enter-from,
+  .list-leave-to {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+
+  /* 确保将离开的元素从布局流中删除
+    以便能够正确地计算移动的动画。 */
+  .list-leave-active {
+    position: absolute;
   }
 </style>
