@@ -1,26 +1,4 @@
-@font-face {
-  font-family: "iconfont"; /* Project id 3737651 */
-  src: url('../fonts/iconfont.woff2') format('woff2'),
-       url('../fonts/iconfont.woff') format('woff'),
-       url('../fonts/iconfont.ttf') format('truetype');
-}
-
 :root {
-  --user-border-color:#B5B5B5;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  text-decoration: none;
-}
-
-a{
-  color: #258aea;
-}
-
-body {
-  /* background-color: #808080; */
-  background-color: #fff;
-  color: #001826;
+  --bg-color: #333333;
+  --bd-color: #007acc;
 }

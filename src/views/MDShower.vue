@@ -18,16 +18,17 @@
       return ''; // use external default escaping
     }
   });
-
-  const htmlObj = ref(null)
+  const htmlObj = ref('')
   const mdURL = inject('mdURL')
   
+  /* 组件挂载完成后获取md文档渲染 */
   onMounted( () => {
     axios.get(mdURL.value)
     .then((response) => {
       htmlObj.value = mdRender.render(response.data)
     })
   } )
+
   /* 监听注入的url变化修改文档渲染 */
   watch(mdURL, async (newQuestion, oldQuestion) => {
     axios.get(newQuestion)
@@ -48,28 +49,5 @@
   </div>
 </template>
 
-<style lang="css" scoped>
-#rootDiv {
-  position: relative;
-}
-.markdown-body {
-  position: absolute;
-  top: 44px;
-  right: 0;
-  /* margin-top: 44px; */
-  z-index: -9999;
-  border-left: #B5B5B5 20px solid;
-  /* background-color: #416f32; */
-  padding: 20px;
-  width: 70%;
-  overflow: auto;
-}
-.markdown-body pre code {
-  padding: 5px;
-  border-radius: 5px;
-  width: 400px;
-  overflow: auto;
-  background-color: rgba(20, 20, 20);
-}
-
+<style lang="css">
 </style>
