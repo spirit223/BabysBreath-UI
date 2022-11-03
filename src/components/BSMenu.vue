@@ -156,7 +156,7 @@
   .bs-menu-item {
     display: inline-block;
     cursor: pointer;
-    background-color: var(--perset-bs-tenderpurple);
+    background-color: var(--perset-bs-shallowpurple);
     width: 256px;
     border-radius: 30px;
     text-align: center;
