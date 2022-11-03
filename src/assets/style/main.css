@@ -9,7 +9,11 @@
   /* 颜色定义 */
   --user-border-color:#B5B5B5;
   --preset-bs-purple:#2d307a;
-  --perset-bs-tenderpurple: #525288;
+  --perset-bs-tenderpurple:#525288;
+  --preset-bs-darkpurple:#1f2040;
+  --preset-bs-shallowpurple:#74759b;
+  --preset-bs-gray:#2d2e36;
+  --preset-bs-whitegray:#475164;
 }
 
 * {
