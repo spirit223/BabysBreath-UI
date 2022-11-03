@@ -34,6 +34,14 @@
       // })
     }
   }
+
+  const navItem = ref([])
+  const navLi = ref()
+  function handleNavShow(tab, index, event) {
+    console.log("tab ", tab);
+    console.log("index ", index);
+    console.log("event ", event);
+  }
 </script>
 
 <template>
@@ -47,7 +55,8 @@
           id="titleBar"
           ref="barRefs"
         >
-          <p @click.stop="(event) => {showNavigation(arrIndex, barKey, event)}">
+          <!-- <p @click.stop="(event) => {showNavigation(arrIndex, barKey, event)}"> -->
+          <p @click.stop="(event) => {handleNavShow(barKey, arrIndex, event)}">
             {{barKey}}
           </p>
           <ul>
@@ -58,6 +67,7 @@
                   'nav-router-' + arrIndex,
                   dynamicClass
                 ]"
+                ref="navLi"
               >
                 <NavigationRouter>
                   <template #navigationContent>

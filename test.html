@@ -7,17 +7,34 @@
   <title>Document</title>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <style>
-    .box {
-      width: 200px;
-      height: 200px;
-      background-color: #666;
+    :root {
+      --bb-purple:#2d307a;
     }
+  .container-box {
+    background-color: var(--bb-purple);
+    width: 200px;
+    height: 200px;
+
+  }
   </style>
 </head>
 <body>
   <div id="app">
-    <div class="box" v-show="booleanArr.value[2]"></div>
-    <button @click="change"></button>
+    <div 
+        v-for="(classify, classifyIndex) of arrClassify" 
+        :key="classifyIndex"
+        class="container-box"
+      >
+        <span>{{classify}}</span>
+        <ul>
+          <li 
+            v-for="(label, labelIndex) of arrLabel" 
+            :key="labelIndex"
+          >
+
+          </li>
+        </ul>
+      </div>
   </div>
 <script>
   const { createApp } = Vue
@@ -29,13 +46,13 @@
       }
     }
   }).mount('#app')
-</script>
-<script setup>
-  import {ref} from 'vue';
-  const booleanArr = ref([new Array(3).fill(false)])
-  function change() {
-    booleanArr.value[2] = !booleanArr.value[2]
-  }
+
+  const arrClassify = ref(["资源", "文章", "视频"])
+  const arrLabel = ref([
+    ['资源选项卡1', '资源选项卡2', '资源选项卡3'], 
+    ['文章选项卡1', '文章选项卡2', '文章选项卡3'],
+    ['视频选项卡1', '视频选项卡2', '视频选项卡3']
+  ])
 </script>
 </body>
 
